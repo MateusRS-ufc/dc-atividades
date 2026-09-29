@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    scroll-behavior: smooth;
+}
+
+ul{
+    width: 100vw;
+    height: 30px;
+    background-color: rgb(255, 82, 82);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+
+    a{
+        text-decoration: none;
+        color: black;
+        padding: 5px 6vw 2.5px;
+        transition: background-color 0.2s;
+        font-style: italic;
+        border-bottom: 3px solid;
+
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 10px;
+    justify-content: center;
+
+    article{
+        width: 170px;
+        height: 265px;
+        border: 1.5px solid;
+        border-radius: 5px;
+        padding: 9px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+        transition: transform 0.1s, background-color 0.1s;
+
+        &:hover{
+            transform: scale(1.01);
+            background-color: rgba(0, 0, 0, 0.073);
+        }
+
+        a{
+            text-decoration: none;
+            border: 2px solid;
+            border-radius: 3px;
+            text-align: center;
+            margin-top: 8px;
+            color: white;
+            background-color: blueviolet;
+            border-color: rgba(0, 0, 0, 0.372);
+            padding: 2px;
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+            transition: transform 0.3s;
+
+            &:hover{
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+@media(max-width: 500px){
+    section article{
+        width: 150px;
+        height: 245px;
+        
+    }
+    section article p{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 9;
+    }
+    
+}
+@media(max-width: 370px){
+    section article{
+        width: 120px;
+        height: 205px;
+    }
+    section article p{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 7;
+    }
+}
