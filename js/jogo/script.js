@@ -32,35 +32,37 @@ function ataqueRef(hpInimigo, manaPC){
     return [hpInimigo - dano, manaPC - 10]
 }
 
-while (emBatalha){
-    alert(`Inimigo HP:${hpInimigo}/${hpMaxInimigo}
-    -----------------------------
-    HERO HP:${hpPC}/${hpMaxPC}, Mana:${manaPC}/${manaMaxPC}`)
+function batalha(){
+    while (emBatalha){
+        alert(`Inimigo HP:${hpInimigo}/${hpMaxInimigo}
+        -----------------------------
+        HERO HP:${hpPC}/${hpMaxPC}, Mana:${manaPC}/${manaMaxPC}`)
+        
+        // TURNO JOGADOR
+        acao = prompt(`Escolha uma ação:
+                    0. Ataque básico
+                    1. Ataque reforçado (10 mana)
+                    2. Defender`)
+        switch(acao){
+            case "0":
+                hpInimigo = ataque(hpInimigo)
+                break
+            case "1":
+                [hpInimigo, manaPC] = ataqueRef(hpInimigo, manaPC)
+                break
+            case "2":
+                defendendo = true
+                break
+        }
     
-    // TURNO JOGADOR
-    acao = prompt(`Escolha uma ação:
-                0. Ataque básico
-                1. Ataque reforçado (10 mana)
-                2. Defender`)
-    switch(acao){
-        case "0":
-            hpInimigo = ataque(hpInimigo)
-            break
-        case "1":
-            [hpInimigo, manaPC] = ataqueRef(hpInimigo, manaPC)
-            break
-        case "2":
-            defendendo = true
-            break
+        if (checarVidas() != true) break
+    
+        // TURNO INIMIGO
+        let dano = random(10, 20)
+        if (defendendo) dano = random(1, 15)
+        hpPC -= dano
+        alert(`O inimigo atacou! Você sofreu ${dano} de dano.`)
+    
+        if (checarVidas() != true) break
     }
-
-    if (checarVidas() != true) break
-
-    // TURNO INIMIGO
-    let dano = random(10, 20)
-    if (defendendo) dano = random(1, 15)
-    hpPC -= dano
-    alert(`O inimigo atacou! Você sofreu ${dano} de dano.`)
-
-    if (checarVidas() != true) break
 }
