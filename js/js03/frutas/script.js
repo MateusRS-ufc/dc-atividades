@@ -2,7 +2,7 @@ let frutas = []
 let executar = true
 
 while (executar){
-    opcao = prompt(`    ----------------
+    const opcao = prompt(`    ----------------
     1. Cadastrar fruta
     2. Listar frutas
     3. Atualizar cadastro
@@ -15,23 +15,32 @@ while (executar){
             frutas.push(prompt("Digite o nome da fruta a cadastrar:"))
             break
         case "2":
-            let lista = ""
-            let count = 0
-            for(fruta of frutas){
-                count++
-                lista += `${count}: ${fruta}\n`
+            if (frutas.length > 0){
+                let lista = ""
+                let count = 0
+                for(fruta of frutas){
+                    count++
+                    lista += `${count}: ${fruta}\n`
+                }
+                alert(lista)
+            }else{
+                alert("Nenhuma fruta encontrada.")
             }
-            alert(lista)
             break
         case "3":
             index = parseInt(frutas.indexOf(prompt("Digite o nome da fruta a substituir:")))
-            frutas[index] = prompt("Digite o nome da fruta a ser inserida no lugar:")
+            if (index == -1) alert("Fruta não encontrada!")
+            else frutas[index] = prompt("Digite o nome da fruta a ser inserida no lugar:")
             break
         case "4":
             index = parseInt(frutas.indexOf(prompt("Digite o nome da fruta a deletar:")))
-            frutas.splice(index, 1)
+            if (index == -1) alert("Fruta não encontrada!")
+            else frutas.splice(index, 1)
             break
         case "5":
             executar = false
+            break
+        default:
+            alert("Comando inválido.")
     }
 }
